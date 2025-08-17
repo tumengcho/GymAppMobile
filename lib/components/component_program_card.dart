@@ -1,20 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gymapp/dtos/dto_category_exercise.dart';
+import 'package:gymapp/dtos/dto_program.dart';
 import 'package:gymapp/main.dart';
 
-class CategoryExerciseCard extends StatefulWidget {
+/// Component pour un programme.
+/// Affiche les informations d'un programme dans une card à partir de la BD.
 
-  CategoryExercise categoryExercise;
+class ProgramCard extends StatefulWidget {
+  Program program;
 
-  CategoryExerciseCard({super.key, required this.categoryExercise});
+  ProgramCard({super.key, required this.program});
 
   @override
-  State<CategoryExerciseCard> createState() => _CategoryExerciseCardState();
+  State<ProgramCard> createState() => _ProgramCardState();
 }
 
-class _CategoryExerciseCardState extends State<CategoryExerciseCard> {
-
+class _ProgramCardState extends State<ProgramCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,13 +34,13 @@ class _CategoryExerciseCardState extends State<CategoryExerciseCard> {
             color: Colors.black.withOpacity(0.3),
             spreadRadius: 2,
             blurRadius: 15,
-            offset: Offset(10, 10),
+            offset: const Offset(10, 10),
           ),
         ],
         image: DecorationImage(
           image: NetworkImage(
-              cloudinaryPublic.getImage(widget.categoryExercise.image).url,
-              ),
+            cloudinaryPublic.getImage(widget.program.image).url,
+          ),
           fit: BoxFit.cover,
         ),
       ),
@@ -59,13 +60,27 @@ class _CategoryExerciseCardState extends State<CategoryExerciseCard> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text("8 excercices", textAlign: TextAlign.end, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontStyle: FontStyle.italic),),
+            const Text(
+              "8 excercices",
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(widget.categoryExercise.name.toUpperCase(),  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900, letterSpacing: 2)),
-                const Icon(Icons.arrow_circle_right, size: 35, color: Color(0xFFD3FF55),)
-
+                Text(widget.program.name.toUpperCase(),
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 2)),
+                const Icon(
+                  Icons.arrow_circle_right,
+                  size: 35,
+                  color: Color(0xFFD3FF55),
+                )
               ],
             )
           ],

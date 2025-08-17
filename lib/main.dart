@@ -4,7 +4,7 @@ import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/NavigationWrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'dtos/dto_category_exercise.dart';
+import 'dtos/dto_program.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

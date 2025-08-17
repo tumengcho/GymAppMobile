@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gymapp/components/component_category_exercise_card.dart';
+import 'package:gymapp/components/component_program_card.dart';
 import 'package:gymapp/components/component_gym_calendar.dart';
-import 'package:gymapp/dtos/dto_category_exercise.dart';
+import 'package:gymapp/dtos/dto_program.dart';
 import 'package:gymapp/service/service_database.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,15 +14,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<CategoryExercise>? categoryExercises;
+  List<Program>? Programs; // Les programes sont null au début.
 
+  /// Récupère les programmes depuis la BD
   void getPrograms() async {
     var programs = await Database.getMyPrograms();
-    setState(()  {
-      categoryExercises = programs;
+    setState(() {
+      Programs = programs;
     });
   }
-
 
   String getGreeting() {
     final hour = DateTime.now().hour;
@@ -37,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     getPrograms();
 
     return Scaffold(
@@ -47,27 +47,25 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Salut '.toUpperCase(), // default text
-                    style: const TextStyle(fontSize: 25),
-                    children: [
-                      TextSpan(
-                        text: 'Christopher,'.toUpperCase(),
-                        style: const TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w900),
-                      ),
-                    ],
-                  ),
-                ),
+                Row(
+                  children: [
+                    Text('Salut '.toUpperCase(), // default text
+                        style: const TextStyle(fontSize: 25)),
+                    Text(
+                      'Christopher,'.toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 30, fontWeight: FontWeight.w900),
+                    ).animate().fadeIn().shimmer(color: const Color(0xFFD3FF55), duration: 2.seconds),
+                  ],
+                ).animate().slideY(begin: -0.3, end: 0),
                 const SizedBox(height: 5),
                 Text(
                   getGreeting(),
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                ),
+                  style: const TextStyle(fontStyle: FontStyle.italic),
+                ).animate().slideX(begin: -0.3, end: 0).fadeIn(duration: 1.5.seconds),
                 const SizedBox(height: 35),
-                GymCalendar(),
-                SizedBox(height: 35),
+                GymCalendar().animate().fadeIn().shimmer(),
+                const SizedBox(height: 35),
                 Text(
                   "Mes Programmes".toUpperCase(),
                   style: const TextStyle(
@@ -76,12 +74,13 @@ class _HomePageState extends State<HomePage> {
                       letterSpacing: 1),
                 ),
                 const SizedBox(height: 15),
-                categoryExercises != null
+                Programs != null
                     ? Column(
                         children: List.generate(
                             4,
-                            (index) => CategoryExerciseCard(
-                                categoryExercise: categoryExercises![index])),
+                            (index) => ProgramCard(program: Programs![index])
+                                .animate()
+                                .fadeIn(delay: (100 * index).ms)),
                       )
                     : const Center(
                         child:
