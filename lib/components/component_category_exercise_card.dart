@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/dtos/dto_category_exercise.dart';
+import 'package:gymapp/main.dart';
 
 class CategoryExerciseCard extends StatefulWidget {
 
@@ -13,6 +14,7 @@ class CategoryExerciseCard extends StatefulWidget {
 }
 
 class _CategoryExerciseCardState extends State<CategoryExerciseCard> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,11 +26,20 @@ class _CategoryExerciseCardState extends State<CategoryExerciseCard> {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: const Color(0xFFD3FF55),
-          width: 1,
+          width: 0.2,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 15,
+            offset: Offset(10, 10),
+          ),
+        ],
         image: DecorationImage(
           image: NetworkImage(
-              widget.categoryExercise.image),
+              cloudinaryPublic.getImage(widget.categoryExercise.image).url,
+              ),
           fit: BoxFit.cover,
         ),
       ),
