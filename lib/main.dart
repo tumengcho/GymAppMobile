@@ -1,15 +1,28 @@
+import 'dart:io';
+
+import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/NavigationWrapper.dart';
-import 'package:gymapp/pages/page_calorie_calculator.dart';
-import 'package:gymapp/pages/page_exercise.dart';
-import 'package:gymapp/pages/page_list_exercises.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'dtos/dto_program.dart';
+import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
-  runApp(const MyApp());
+late final FirebaseFirestore db;
+late final CloudinaryPublic cloudinaryPublic;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  db = FirebaseFirestore.instance;
+  cloudinaryPublic = CloudinaryPublic("dc102wzxc", "gym_app_upload");
+  runApp(const GymApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class GymApp extends StatelessWidget {
+  const GymApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +32,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         primaryColor: Color(0xFFD3FF55),
         scaffoldBackgroundColor: Color(0xFF323230),
-        textTheme: TextTheme(
-            bodySmall: TextStyle(color: Colors.white),
-            bodyMedium: TextStyle(color: Colors.white),
-            bodyLarge: TextStyle(color: Colors.white),
+        textTheme: const TextTheme(
+          bodySmall: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
         ),
         useMaterial3: true,
       ),
