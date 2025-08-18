@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_star_renderer.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
 
+import '../main.dart';
+
 class CardExercise extends StatelessWidget {
   ExerciseDTO exercise;
 
@@ -20,37 +22,37 @@ class CardExercise extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         clipBehavior: Clip.hardEdge,
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 7,
-                child: Image.asset(
-                  "assets/images/${exercise.image}",
-                  fit: BoxFit.contain,
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 6,
+              child: Image.network(
+                cloudinaryPublic.getImage(exercise.image).url,
               ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [
-                          Color(0xFF323230),
-                          Color(0xFF9ABE33),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: [0.3, 1]),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SingleChildScrollView(
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF323230),
+                        Color(0xFF9ABE33),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.3, 1]),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Text(
                             exercise.name.toUpperCase(),
@@ -59,19 +61,22 @@ class CardExercise extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                           )),
-                      Text(exercise.category,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(exercise.category.name,
                           style: TextStyle(
                               fontSize: 15,
                               color: Colors.white.withOpacity(0.8),
                               fontWeight: FontWeight.normal,
                               fontStyle: FontStyle.italic)),
-                      StarRenderer(numStars: exercise.difficulty)
-                    ],
-                  ),
+                    ),
+                    Expanded( flex: 1,child: StarRenderer(numStars: exercise.difficulty))
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ));
   }
 }

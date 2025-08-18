@@ -4,7 +4,7 @@ import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/NavigationWrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'dtos/dto_program.dart';
+import 'package:gymapp/service/service_database.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -18,6 +18,7 @@ void main() async {
   );
   db = FirebaseFirestore.instance;
   cloudinaryPublic = CloudinaryPublic("dc102wzxc", "gym_app_upload");
+  // Database.seedDatabase();
   runApp(const GymApp());
 }
 

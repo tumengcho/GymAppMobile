@@ -16,6 +16,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Program>? Programs; // Les programes sont null au début.
 
+  @override
+  void initState() {
+    super.initState();
+    getPrograms();
+  }
+
   /// Récupère les programmes depuis la BD
   void getPrograms() async {
     var programs = await Database.getMyPrograms();
@@ -38,8 +44,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    getPrograms();
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -55,14 +59,18 @@ class _HomePageState extends State<HomePage> {
                       'Christopher,'.toUpperCase(),
                       style: const TextStyle(
                           fontSize: 30, fontWeight: FontWeight.w900),
-                    ).animate().fadeIn().shimmer(color: const Color(0xFFD3FF55), duration: 2.seconds),
+                    ).animate().fadeIn().shimmer(
+                        color: const Color(0xFFD3FF55), duration: 2.seconds),
                   ],
                 ).animate().slideY(begin: -0.3, end: 0),
                 const SizedBox(height: 5),
                 Text(
                   getGreeting(),
                   style: const TextStyle(fontStyle: FontStyle.italic),
-                ).animate().slideX(begin: -0.3, end: 0).fadeIn(duration: 1.5.seconds),
+                )
+                    .animate()
+                    .slideX(begin: -0.3, end: 0)
+                    .fadeIn(duration: 1.5.seconds),
                 const SizedBox(height: 35),
                 GymCalendar().animate().fadeIn().shimmer(),
                 const SizedBox(height: 35),
@@ -77,14 +85,14 @@ class _HomePageState extends State<HomePage> {
                 Programs != null
                     ? Column(
                         children: List.generate(
-                            4,
+                            Programs!.length,
                             (index) => ProgramCard(program: Programs![index])
                                 .animate()
                                 .fadeIn(delay: (100 * index).ms)),
                       )
                     : const Center(
                         child:
-                            CircularProgressIndicator(color: Color(0xFF323230)),
+                            CircularProgressIndicator(color: Color(0xFFD3FF55)),
                       )
               ],
             )),
