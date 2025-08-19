@@ -1,0 +1,595 @@
+[
+  {
+    "quote": "Push yourself, because no one else is going to do it for you.",
+    "author": "Unknown",
+    "important": "Push yourself"
+  },
+  {
+    "quote": "Don’t limit your challenges. Challenge your limits.",
+    "author": "Jerry Dunn",
+    "important": "Challenge your limits"
+  },
+  {
+    "quote": "The body achieves what the mind believes.",
+    "author": "Napoleon Hill",
+    "important": "what the mind believes"
+  },
+  {
+    "quote": "Pain is temporary. Quitting lasts forever.",
+    "author": "Lance Armstrong",
+    "important": "Quitting lasts forever"
+  },
+  {
+    "quote": "Your only limit is you.",
+    "author": "Unknown",
+    "important": "Your only limit"
+  },
+  {
+    "quote": "Sweat is fat crying.",
+    "author": "Unknown",
+    "important": "Sweat is fat crying"
+  },
+  {
+    "quote": "Stronger than yesterday.",
+    "author": "Unknown",
+    "important": "Stronger than yesterday"
+  },
+  {
+    "quote": "Train insane or remain the same.",
+    "author": "Jillian Michaels",
+    "important": "Train insane"
+  },
+  {
+    "quote": "Make your body the sexiest outfit you own.",
+    "author": "Unknown",
+    "important": "Make your body"
+  },
+  {
+    "quote": "Don’t wish for it. Work for it.",
+    "author": "Unknown",
+    "important": "Work for it"
+  },
+  {
+    "quote": "Success is no accident.",
+    "author": "Pelé",
+    "important": "no accident"
+  },
+  {
+    "quote": "I’ve failed over and over and over again in my life and that is why I succeed.",
+    "author": "Michael Jordan",
+    "important": "I’ve failed"
+  },
+  {
+    "quote": "It’s not whether you get knocked down, it’s whether you get up.",
+    "author": "Vince Lombardi",
+    "important": "get knocked down"
+  },
+  {
+    "quote": "Don’t count the days, make the days count.",
+    "author": "Muhammad Ali",
+    "important": "make the days count"
+  },
+  {
+    "quote": "The only bad workout is the one that didn’t happen.",
+    "author": "Unknown",
+    "important": "didn’t happen"
+  },
+  {
+    "quote": "You miss 100% of the shots you don’t take.",
+    "author": "Wayne Gretzky",
+    "important": "shots you don’t take"
+  },
+  {
+    "quote": "Hard work beats talent when talent doesn’t work hard.",
+    "author": "Tim Notke",
+    "important": "Hard work beats talent"
+  },
+  {
+    "quote": "Champions keep playing until they get it right.",
+    "author": "Billie Jean King",
+    "important": "Champions keep playing"
+  },
+  {
+    "quote": "The difference between the impossible and the possible lies in a person’s determination.",
+    "author": "Tommy Lasorda",
+    "important": "determination"
+  },
+  {
+    "quote": "Success is the sum of small efforts, repeated day in and day out.",
+    "author": "Robert Collier",
+    "important": "small efforts"
+  },
+  {
+    "quote": "Believe you can and you’re halfway there.",
+    "author": "Theodore Roosevelt",
+    "important": "Believe you can"
+  },
+  {
+    "quote": "The harder the battle, the sweeter the victory.",
+    "author": "Les Brown",
+    "important": "sweeter the victory"
+  },
+  {
+    "quote": "It always seems impossible until it’s done.",
+    "author": "Nelson Mandela",
+    "important": "impossible until it’s done"
+  },
+  {
+    "quote": "The only place where success comes before work is in the dictionary.",
+    "author": "Vidal Sassoon",
+    "important": "success comes before work"
+  },
+  {
+    "quote": "Don’t stop when you’re tired. Stop when you’re done.",
+    "author": "Unknown",
+    "important": "Stop when you’re done"
+  },
+  {
+    "quote": "Success is the result of preparation, hard work, and learning from failure.",
+    "author": "Colin Powell",
+    "important": "preparation, hard work"
+  },
+  {
+    "quote": "You don’t have to be great to start, but you have to start to be great.",
+    "author": "Zig Ziglar",
+    "important": "start to be great"
+  },
+  {
+    "quote": "The pain you feel today will be the strength you feel tomorrow.",
+    "author": "Unknown",
+    "important": "strength you feel tomorrow"
+  },
+  {
+    "quote": "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "author": "Winston Churchill",
+    "important": "courage to continue"
+  },
+  {
+    "quote": "Act as if what you do makes a difference. It does.",
+    "author": "William James",
+    "important": "makes a difference"
+  },
+  {
+    "quote": "Success usually comes to those who are too busy to be looking for it.",
+    "author": "Henry David Thoreau",
+    "important": "too busy to be looking"
+  },
+  {
+    "quote": "Do one thing every day that scares you.",
+    "author": "Eleanor Roosevelt",
+    "important": "scares you"
+  },
+  {
+    "quote": "The only limit to our realization of tomorrow is our doubts of today.",
+    "author": "Franklin D. Roosevelt",
+    "important": "doubts of today"
+  },
+  {
+    "quote": "Don’t wait. The time will never be just right.",
+    "author": "Napoleon Hill",
+    "important": "The time will never be just right"
+  },
+  {
+    "quote": "Everything you’ve ever wanted is on the other side of fear.",
+    "author": "George Addair",
+    "important": "other side of fear"
+  },
+  {
+    "quote": "Opportunities don't happen, you create them.",
+    "author": "Chris Grosser",
+    "important": "you create them"
+  },
+  {
+    "quote": "Do what you can with all you have, wherever you are.",
+    "author": "Theodore Roosevelt",
+    "important": "Do what you can"
+  },
+  {
+    "quote": "I find that the harder I work, the more luck I seem to have.",
+    "author": "Thomas Jefferson",
+    "important": "the harder I work"
+  },
+  {
+    "quote": "Don’t be afraid to give up the good to go for the great.",
+    "author": "John D. Rockefeller",
+    "important": "give up the good"
+  },
+  {
+    "quote": "I never dreamed about success. I worked for it.",
+    "author": "Estée Lauder",
+    "important": "I worked for it"
+  },
+  {
+    "quote": "Success doesn’t just find you. You have to go out and get it.",
+    "author": "Unknown",
+    "important": "You have to go out and get it"
+  },
+  {
+    "quote": "The way to get started is to quit talking and begin doing.",
+    "author": "Walt Disney",
+    "important": "quit talking and begin doing"
+  },
+  {
+    "quote": "If you can dream it, you can do it.",
+    "author": "Walt Disney",
+    "important": "you can do it"
+  },
+  {
+    "quote": "I am not a product of my circumstances. I am a product of my decisions.",
+    "author": "Stephen R. Covey",
+    "important": "product of my decisions"
+  },
+  {
+    "quote": "You become what you believe.",
+    "author": "Oprah Winfrey",
+    "important": "You become what you believe"
+  },
+  {
+    "quote": "The best way to predict the future is to create it.",
+    "author": "Abraham Lincoln",
+    "important": "create it"
+  },
+  {
+    "quote": "In the middle of every difficulty lies opportunity.",
+    "author": "Albert Einstein",
+    "important": "difficulty lies opportunity"
+  },
+  {
+    "quote": "It does not matter how slowly you go as long as you do not stop.",
+    "author": "Confucius",
+    "important": "do not stop"
+  },
+  {
+    "quote": "Whether you think you can or you think you can't, you're right.",
+    "author": "Henry Ford",
+    "important": "you're right"
+  },
+  {
+    "quote": "The best revenge is massive success.",
+    "author": "Frank Sinatra",
+    "important": "massive success"
+  },
+  {
+    "quote": "I can do all things through Christ who strengthens me.",
+    "author": "Philippians 4:13",
+    "important": "all things"
+  },
+  {
+    "quote": "Do you not know that your bodies are temples of the Holy Spirit?",
+    "author": "1 Corinthians 6:19",
+    "important": "temples of the Holy Spirit"
+  },
+  {
+    "quote": "Run in such a way as to get the prize.",
+    "author": "1 Corinthians 9:24",
+    "important": "Run in such a way"
+  },
+  {
+    "quote": "Be strong and courageous. Do not be afraid; do not be discouraged.",
+    "author": "Joshua 1:9",
+    "important": "Be strong and courageous"
+  },
+  {
+    "quote": "Let us run with perseverance the race marked out for us.",
+    "author": "Hebrews 12:1",
+    "important": "run with perseverance"
+  },
+  {
+    "quote": "The Lord is my strength and my shield.",
+    "author": "Psalm 28:7",
+    "important": "my strength and my shield"
+  },
+  {
+    "quote": "For God gave us a spirit not of fear but of power, love, and self-control.",
+    "author": "2 Timothy 1:7",
+    "important": "spirit not of fear but of power"
+  },
+  {
+    "quote": "Be faithful in small things because it is in them that your strength lies.",
+    "author": "Luke 16:10",
+    "important": "your strength lies"
+  },
+  {
+    "quote": "I press on toward the goal to win the prize for which God has called me heavenward in Christ Jesus.",
+    "author": "Philippians 3:14",
+    "important": "press on toward the goal"
+  },
+  {
+    "quote": "Do everything in love.",
+    "author": "1 Corinthians 16:14",
+    "important": "in love"
+  },
+  {
+    "quote": "Commit to the Lord whatever you do, and he will establish your plans.",
+    "author": "Proverbs 16:3",
+    "important": "Commit to the Lord"
+  },
+  {
+    "quote": "Cast all your anxiety on Him because He cares for you.",
+    "author": "1 Peter 5:7",
+    "important": "He cares for you"
+  },
+  {
+    "quote": "Be strong and take heart, all you who hope in the Lord.",
+    "author": "Psalm 31:24",
+    "important": "Be strong and take heart"
+  },
+  {
+    "quote": "Those who hope in the Lord will renew their strength.",
+    "author": "Isaiah 40:31",
+    "important": "renew their strength"
+  },
+  {
+    "quote": "Whatever you do, work at it with all your heart, as working for the Lord.",
+    "author": "Colossians 3:23",
+    "important": "work at it with all your heart"
+  },
+  {
+    "quote": "Do not be conformed to this world, but be transformed by the renewing of your mind.",
+    "author": "Romans 12:2",
+    "important": "renewing of your mind"
+  },
+  {
+    "quote": "The joy of the Lord is your strength.",
+    "author": "Nehemiah 8:10",
+    "important": "your strength"
+  },
+  {
+    "quote": "Let us not become weary in doing good, for at the proper time we will reap a harvest.",
+    "author": "Galatians 6:9",
+    "important": "we will reap a harvest"
+  },
+  {
+    "quote": "Do not be afraid, for I am with you; do not be dismayed, for I am your God.",
+    "author": "Isaiah 41:10",
+    "important": "I am with you"
+  },
+  {
+    "quote": "Peace I leave with you; my peace I give you.",
+    "author": "John 14:27",
+    "important": "my peace I give you"
+  },
+  {
+    "quote": "If you don’t take risks, you can’t create a future!",
+    "author": "Monkey D. Luffy, One Piece",
+    "important": "take risks"
+  },
+  {
+    "quote": "Power comes in response to a need, not a desire. You have to create that need.",
+    "author": "Goku, Dragon Ball Z",
+    "important": "create that need"
+  },
+  {
+    "quote": "When you give up, your dreams die with you.",
+    "author": "Uchiha Itachi, Naruto",
+    "important": "dreams die with you"
+  },
+  {
+    "quote": "A lesson without pain is meaningless. That’s why we grow stronger through hardship.",
+    "author": "Kakashi Hatake, Naruto",
+    "important": "grow stronger through hardship"
+  },
+  {
+    "quote": "If you run from your fears, your body will never become strong.",
+    "author": "Roronoa Zoro, One Piece",
+    "important": "never become strong"
+  },
+  {
+    "quote": "The moment you think of giving up, remember why you started.",
+    "author": "All Might, My Hero Academia",
+    "important": "remember why you started"
+  },
+  {
+    "quote": "No matter how deep the night, it always turns to day.",
+    "author": "Brook, One Piece",
+    "important": "always turns to day"
+  },
+  {
+    "quote": "It’s not the face that makes someone a monster; it’s the choices they make with their lives.",
+    "author": "Naruto Uzumaki, Naruto",
+    "important": "choices they make"
+  },
+  {
+    "quote": "You should enjoy the little detours. To the fullest. Because that’s where you’ll find the things more important than what you want.",
+    "author": "Kakashi Hatake, Naruto",
+    "important": "more important than what you want"
+  },
+  {
+    "quote": "A lesson can only be learned through hard work and persistence.",
+    "author": "Rock Lee, Naruto",
+    "important": "hard work and persistence"
+  },
+  {
+    "quote": "A lesson can only be learned through sweat and determination.",
+    "author": "Rock Lee, Naruto",
+    "important": "sweat and determination"
+  },
+  {
+    "quote": "The body grows stronger when you push past your limits.",
+    "author": "Goku, Dragon Ball Z",
+    "important": "push past your limits"
+  },
+  {
+    "quote": "Hard work beats talent when talent doesn’t work hard.",
+    "author": "Koro Sensei, Assassination Classroom",
+    "important": "Hard work beats talent"
+  },
+  {
+    "quote": "If you want to get stronger, you have to be willing to endure pain.",
+    "author": "Might Guy, Naruto",
+    "important": "endure pain"
+  },
+  {
+    "quote": "No one can grow stronger without facing their fears.",
+    "author": "Roronoa Zoro, One Piece",
+    "important": "grow stronger"
+  },
+  {
+    "quote": "Discipline is what transforms dreams into reality.",
+    "author": "All Might, My Hero Academia",
+    "important": "Discipline"
+  },
+  {
+    "quote": "Victory is reserved for those willing to pay its price.",
+    "author": "Vegeta, Dragon Ball Z",
+    "important": "pay its price"
+  },
+  {
+    "quote": "Strength is earned, not given.",
+    "author": "Kenshin Himura, Rurouni Kenshin",
+    "important": "Strength is earned"
+  },
+  {
+    "quote": "Don’t fear failure. Fear being in the same place next year as you are today.",
+    "author": "Erza Scarlet, Fairy Tail",
+    "important": "Fear being in the same place"
+  },
+  {
+    "quote": "Only those who risk going too far can possibly find out how far they can go.",
+    "author": "Goku, Dragon Ball Z",
+    "important": "risk going too far"
+  },
+  {
+    "quote": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+    "author": "Aristotle",
+    "important": "Excellence is a habit"
+  },
+  {
+    "quote": "He who is brave is free.",
+    "author": "Seneca",
+    "important": "brave is free"
+  },
+  {
+    "quote": "What we achieve inwardly will change outer reality.",
+    "author": "Plutarch",
+    "important": "achieve inwardly"
+  },
+  {
+    "quote": "Man conquers the world by conquering himself.",
+    "author": "Zeno of Citium",
+    "important": "conquering himself"
+  },
+  {
+    "quote": "It is not that we have a short time to live, but that we waste much of it.",
+    "author": "Seneca",
+    "important": "waste much of it"
+  },
+  {
+    "quote": "Difficulties strengthen the mind, as labor does the body.",
+    "author": "Seneca",
+    "important": "strengthen the mind"
+  },
+  {
+    "quote": "The unexamined life is not worth living.",
+    "author": "Socrates",
+    "important": "unexamined life"
+  },
+  {
+    "quote": "He who has a why to live can bear almost any how.",
+    "author": "Friedrich Nietzsche",
+    "important": "He who has a why"
+  },
+  {
+    "quote": "First say to yourself what you would be; and then do what you have to do.",
+    "author": "Epictetus",
+    "important": "do what you have to do"
+  },
+  {
+    "quote": "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+    "author": "Aristotle",
+    "important": "Excellence is a habit"
+  },
+  {
+    "quote": "He who is brave is free.",
+    "author": "Seneca",
+    "important": "brave is free"
+  },
+  {
+    "quote": "What we achieve inwardly will change outer reality.",
+    "author": "Plutarch",
+    "important": "achieve inwardly"
+  },
+  {
+    "quote": "Man conquers the world by conquering himself.",
+    "author": "Zeno of Citium",
+    "important": "conquering himself"
+  },
+  {
+    "quote": "It is not that we have a short time to live, but that we waste much of it.",
+    "author": "Seneca",
+    "important": "waste much of it"
+  },
+  {
+    "quote": "Difficulties strengthen the mind, as labor does the body.",
+    "author": "Seneca",
+    "important": "strengthen the mind"
+  },
+  {
+    "quote": "The unexamined life is not worth living.",
+    "author": "Socrates",
+    "important": "unexamined life"
+  },
+  {
+    "quote": "He who has a why to live can bear almost any how.",
+    "author": "Friedrich Nietzsche",
+    "important": "He who has a why"
+  },
+  {
+    "quote": "First say to yourself what you would be; and then do what you have to do.",
+    "author": "Epictetus",
+    "important": "do what you have to do"
+  },
+  {
+    "quote": "Strength does not come from physical capacity. It comes from an indomitable will.",
+    "author": "Mahatma Gandhi",
+    "important": "indomitable will"
+  },
+  {
+    "quote": "It is not the mountain we conquer, but ourselves.",
+    "author": "Sir Edmund Hillary",
+    "important": "we conquer, but ourselves"
+  },
+  {
+    "quote": "Discipline is the bridge between goals and accomplishment.",
+    "author": "Jim Rohn",
+    "important": "Discipline is the bridge"
+  },
+  {
+    "quote": "Energy and persistence conquer all things.",
+    "author": "Benjamin Franklin",
+    "important": "Energy and persistence"
+  },
+  {
+    "quote": "The more you sweat in practice, the less you bleed in battle.",
+    "author": "Ancient Proverb",
+    "important": "less you bleed in battle"
+  },
+  {
+    "quote": "Self-control is strength. Right thought is mastery. Calmness is power.",
+    "author": "James Allen",
+    "important": "Calmness is power"
+  },
+  {
+    "quote": "Success is nothing more than a few simple disciplines, practiced every day.",
+    "author": "Jim Rohn",
+    "important": "disciplines, practiced every day"
+  },
+  {
+    "quote": "No man ever steps in the same river twice, for it’s not the same river and he’s not the same man.",
+    "author": "Heraclitus",
+    "important": "he’s not the same man"
+  },
+  {
+    "quote": "A strong body makes the mind strong.",
+    "author": "Friedrich Nietzsche",
+    "important": "strong body makes the mind strong"
+  },
+  {
+    "quote": "Without struggle, there is no progress.",
+    "author": "Frederick Douglass",
+    "important": "no progress"
+  }
+]
+
+
+

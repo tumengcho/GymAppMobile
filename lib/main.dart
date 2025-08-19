@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:gymapp/NavigationWrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
+import 'package:gymapp/pages/page_default_quote.dart';
 import 'package:gymapp/pages/page_exercise.dart';
 import 'package:gymapp/service/service_database.dart';
 import 'firebase_options.dart';
@@ -71,7 +72,8 @@ class GymApp extends StatelessWidget {
         ),
         initialRoute: "/",
         routes: {
-          "/": (context) => const NavigationWrapper(),
+          "/": (context) => QuotePage(),
+          "/home": (context) => const NavigationWrapper(),
           "/startProgram": (context) {
             final arg =
                 ModalRoute.of(context)!.settings.arguments as List<ExerciseDTO>;
