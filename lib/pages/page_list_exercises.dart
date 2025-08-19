@@ -43,13 +43,13 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
     removeExistingExercises();
   }
 
-  void removeExistingExercises(){
+  void removeExistingExercises() {
     displayExercises.clear();
     setState(() {
       displayExercises = List.from(exercises!);
-      displayExercises.removeWhere((exo) => selectedProgram!.exercises.any((exoProgram) => exoProgram.id == exo.id));
+      displayExercises.removeWhere((exo) => selectedProgram!.exercises
+          .any((exoProgram) => exoProgram.id == exo.id));
     });
-
   }
 
   Future<bool> _onSwipe(
@@ -61,8 +61,9 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
       setState(() {
         isAddingExercise = true;
       });
-      ExerciseDTO selectedExcercise = displayExercises[currentIndex!];
-      ProgramExercise newExerciceProgram = ProgramExercise(selectedProgram?.id, selectedExcercise.id);
+      ExerciseDTO selectedExcercise = displayExercises[previousIndex!];
+      ProgramExercise newExerciceProgram =
+          ProgramExercise(selectedProgram?.id, selectedExcercise.id);
       await Database.addExerciseToProgram(newExerciceProgram);
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -71,17 +72,18 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
           content: RichText(
             text: TextSpan(
               style: const TextStyle(fontSize: 16),
-              // default style
               children: [
                 const TextSpan(text: "L'exercice "),
                 TextSpan(
                   text: selectedExcercise.name,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 const TextSpan(text: " a été ajouté au programme "),
                 TextSpan(
                   text: selectedProgram!.name,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ],
             ),
@@ -92,8 +94,8 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
 
       setState(() {
         isAddingExercise = false;
+        displayExercises.remove(selectedExcercise);
       });
-
     }
     return true;
   }
@@ -103,6 +105,8 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
     int currentIndex,
     CardSwiperDirection direction,
   ) {
+    ExerciseDTO selectedExcercise = displayExercises[previousIndex!];
+    displayExercises.remove(selectedExcercise);
     return true;
   }
 
@@ -130,29 +134,34 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
                         selectedProgram = newProgram;
                       });
                       removeExistingExercises();
-
                     },
                   ),
-                  Flexible(
-                    child: CardSwiper(
-                      key:  ValueKey(selectedProgram!.id),
-                        controller: controller,
-                        cardsCount: displayExercises.length,
-                        onSwipe: _onSwipe,
-                        onUndo: _onUndo,
-                        isLoop: false,
-                        isDisabled: isAddingExercise,
-                        numberOfCardsDisplayed: 3,
-                        backCardOffset: const Offset(30, 0),
-                        padding: const EdgeInsets.all(24.0),
-                        cardBuilder: (
-                          context,
-                          index,
-                          horizontalThresholdPercentage,
-                          verticalThresholdPercentage,
-                        ) =>
-                            CardExercise(exercise: displayExercises[index])),
-                  ),
+                  displayExercises.isEmpty
+                      ? const Center(
+                          child:
+                              Text("Aucune carte possible pour ce programme."))
+                      : Flexible(
+                          child: CardSwiper(
+                              key: ValueKey(selectedProgram!.id),
+                              controller: controller,
+                              cardsCount: displayExercises.length,
+                              onSwipe: _onSwipe,
+                              onUndo: _onUndo,
+                              isLoop: false,
+                              isDisabled: isAddingExercise,
+                              numberOfCardsDisplayed:
+                                  displayExercises.length > 1 ? 3 : 1,
+                              backCardOffset: const Offset(30, 0),
+                              padding: const EdgeInsets.all(24.0),
+                              cardBuilder: (
+                                context,
+                                index,
+                                horizontalThresholdPercentage,
+                                verticalThresholdPercentage,
+                              ) =>
+                                  CardExercise(
+                                      exercise: displayExercises[index])),
+                        ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(

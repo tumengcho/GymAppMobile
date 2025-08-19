@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gymapp/components/component_exercise_list_item.dart';
 import 'package:gymapp/dtos/dto_program.dart';
 import 'package:gymapp/main.dart';
 
@@ -45,7 +46,7 @@ class _ProgramCardState extends State<ProgramCard> {
         ),
       ),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: [
@@ -90,58 +91,52 @@ class _ProgramCardState extends State<ProgramCard> {
                           width: double.maxFinite,
                           padding: const EdgeInsets.all(32),
                           decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
                             color: Color(0XFF090808),
-
                           ),
-                          child: widget.program.exercises.isNotEmpty? Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: List.generate(
-                                        widget.program.exercises.length,
-                                        (index) => Container(
-                                            width: double.maxFinite,
-                                            padding: const EdgeInsets.all(10),
-                                            margin: const EdgeInsets.symmetric(vertical: 10),
-                                            height: 90,
-                                            decoration: BoxDecoration(
-                                                color: const Color(0XFF141414),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                border: Border.all(
-                                                    color: Color(0XFFD3FF55),
-                                                    width: 2)),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(widget
-                                                    .program.exercises[index].name, style: const TextStyle(color: Color(0XFFD3FF55),fontSize: 18, fontWeight: FontWeight.bold),),
-                                                const Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Text("12 reps", style: TextStyle(color: Color(0XFFD3FF55))),
-                                                    Text("3 sets", style: TextStyle(color: Color(0XFFD3FF55)))
-                                                  ],
-                                                )
-                                              ],
-                                            ))),
-                                  ),
+                          child: widget.program.exercises.isNotEmpty
+                              ? Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: List.generate(
+                                              widget.program.exercises.length,
+                                              (index) => ExerciseListItem(
+                                                  exercise: widget.program
+                                                      .exercises[index])),
+                                        ),
+                                      ),
+                                    ),
+                                    ElevatedButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStateProperty.all(
+                                                const Color(0xFFD3FF55)),
+                                      ),
+                                      onPressed: () => {
+                                        Navigator.pop(context),
+                                        Navigator.pushNamed(
+                                            context, "/startProgram",
+                                            arguments: widget.program.exercises)
+                                      },
+                                      child: const Text(
+                                        'Commencer',
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : const Center(
+                                  child:
+                                      Text("Aucun exercise pour ce programme."),
                                 ),
-                              ),
-                              ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor: WidgetStateProperty.all(const Color(0xFFD3FF55)),
-                                ),
-                                onPressed: () => Navigator.of(context).pop(),
-                                child: const Text('Commencer', style: TextStyle(color: Colors.black),),
-                              ),
-                            ],
-                          ):const Center(child: Text("Aucun exercise pour ce programme."),),
                         );
                       },
                     );
