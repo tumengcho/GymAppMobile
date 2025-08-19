@@ -33,6 +33,7 @@ class Utils{
     final List quotes = data['rest_quotes'];
 
     final random = Random();
-    return quotes[random.nextInt(quotes.length)];
+    quotes.shuffle(random);
+    return quotes[0];
   }
 }
