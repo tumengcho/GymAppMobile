@@ -86,72 +86,76 @@ class _ExercisePageState extends State<ExercisePage> {
       body: startedProgram
           ? isBreak
               ? Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "Break".toUpperCase(),
-                        style: const TextStyle(
-                            color: Color(0xFFD3FF55),
-                            fontSize: 30,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 2),
-                      ),
-                      CircularCountDownTimer(
-                        duration: 15,
-                        initialDuration: 0,
-                        controller: CountDownController(),
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: MediaQuery.of(context).size.height / 2,
-                        ringColor: Colors.grey[300]!,
-                        ringGradient: null,
-                        fillColor: const Color(0xFFD3FF55),
-                        fillGradient: null,
-                        backgroundColor: Colors.transparent,
-                        backgroundGradient: null,
-                        strokeWidth: 20.0,
-                        strokeCap: StrokeCap.round,
-                        textStyle: const TextStyle(
-                            fontSize: 33.0,
-                            color: Color(0xFFD3FF55),
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                        textFormat: CountdownTextFormat.S,
-                        isReverse: true,
-                        isReverseAnimation: false,
-                        isTimerTextShown: true,
-                        autoStart: true,
-                        onStart: () async {
-                          await audioPlayer
-                              .play(AssetSource('sounds/waiting.mp3'));
-                        },
-                        onComplete: () {
-                          audioPlayer.stop();
-                          setState(() {
-                            isBreak = false;
-                          });
-                        },
-                        timeFormatterFunction:
-                            (defaultFormatterFunction, duration) {
-                          if (duration.inSeconds == 0) {
-                            return "Fin";
-                          } else {
-                            return Function.apply(
-                                defaultFormatterFunction, [duration]);
-                          }
-                        },
-                      ),
-                      AnimatedTextKit(
-                        totalRepeatCount: 1,
-                        isRepeatingAnimation: false,
-                        animatedTexts: [
-                          TypewriterAnimatedText(breakQuote.toUpperCase(),
-                              speed: 100.ms,
-                              textStyle: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
-                        ],
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Break".toUpperCase(),
+                          style: const TextStyle(
+                              color: Color(0xFFD3FF55),
+                              fontSize: 30,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 2),
+                        ),
+                        CircularCountDownTimer(
+                          duration: 15,
+                          initialDuration: 0,
+                          controller: CountDownController(),
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: MediaQuery.of(context).size.height / 2,
+                          ringColor: Colors.grey[300]!,
+                          ringGradient: null,
+                          fillColor: const Color(0xFFD3FF55),
+                          fillGradient: null,
+                          backgroundColor: Colors.transparent,
+                          backgroundGradient: null,
+                          strokeWidth: 20.0,
+                          strokeCap: StrokeCap.round,
+                          textStyle: const TextStyle(
+                              fontSize: 33.0,
+                              color: Color(0xFFD3FF55),
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                          textFormat: CountdownTextFormat.S,
+                          isReverse: true,
+                          isReverseAnimation: false,
+                          isTimerTextShown: true,
+                          autoStart: true,
+                          onStart: () async {
+                            await audioPlayer
+                                .play(AssetSource('sounds/waiting.mp3'));
+                          },
+                          onComplete: () {
+                            audioPlayer.stop();
+                            setState(() {
+                              isBreak = false;
+                            });
+                          },
+                          timeFormatterFunction:
+                              (defaultFormatterFunction, duration) {
+                            if (duration.inSeconds == 0) {
+                              return "Fin";
+                            } else {
+                              return Function.apply(
+                                  defaultFormatterFunction, [duration]);
+                            }
+                          },
+                        ),
+                        AnimatedTextKit(
+                          totalRepeatCount: 1,
+                          isRepeatingAnimation: false,
+                          animatedTexts: [
+                            TypewriterAnimatedText(breakQuote.toUpperCase(),
+                                speed: 100.ms,
+                                textAlign: TextAlign.center,
+                                textStyle: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20)),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 )
               : Column(
@@ -176,18 +180,26 @@ class _ExercisePageState extends State<ExercisePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                widget.exercises[currentExerciseIndex].name
-                                    .toUpperCase(),
-                                style: const TextStyle(
-                                    color: Color(0xFFD3FF55),
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2),
-                              )
+                              AnimatedTextKit(
+                                key: ValueKey(currentExerciseIndex),
+                                repeatForever: false,
+                                totalRepeatCount: 1,
+                                isRepeatingAnimation: false,
+                                animatedTexts: [
+                                  TyperAnimatedText(
+                                    widget.exercises[currentExerciseIndex].name.toUpperCase(),
+                                    speed: 100.ms,
+                                    textStyle: const TextStyle(
+                                        color: Color(0xFFD3FF55),
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w900,
+                                        letterSpacing: 2),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
-                        ).animate().fadeIn()),
+                        ).animate().shimmer()),
                     Expanded(
                         flex: 3,
                         child: Container(
@@ -291,14 +303,14 @@ class _ExercisePageState extends State<ExercisePage> {
                                       ))
                                 ],
                               ),
-                              Expanded(child: SizedBox()),
+                              const Expanded(child: SizedBox()),
                               StepsRenderer(
                                 numSteps: widget.exercises.length,
                                 currentStep: currentExerciseIndex,
                               )
                             ],
                           ),
-                        ))
+                        ).animate().fadeIn().slideY(begin: 0.5, end: 0))
                   ],
                 )
           : Center(
