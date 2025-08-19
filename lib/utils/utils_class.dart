@@ -36,4 +36,13 @@ class Utils{
     quotes.shuffle(random);
     return quotes[0];
   }
+
+  static Future<Map<String, dynamic>> getRandomMotivationQuote() async {
+    final String response = await rootBundle.loadString('assets/data/main_page_quotes.json');
+    final List<dynamic> quotes = json.decode(response);
+
+    final random = Random();
+    quotes.shuffle(random);
+    return quotes[0];
+  }
 }
