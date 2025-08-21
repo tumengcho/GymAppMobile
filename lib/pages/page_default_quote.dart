@@ -44,7 +44,7 @@ class _QuotePageState extends State<QuotePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 CircularCountDownTimer(
-                  duration: 7,
+                  duration: 10,
                   initialDuration: 0,
                   controller: CountDownController(),
                   width: 20,
@@ -104,11 +104,11 @@ class _QuotePageState extends State<QuotePage> {
                               text: quote!["important"],
                               style: TextStyle(color: Color(0xFFD3FF55), fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-                            TextSpan(
-                              text: quote!["quote"].split(quote!["important"])[1],
+                            quote!["quote"].split(quote!["important"]).length > 1? TextSpan(
+                              text: " "+quote!["quote"].split(quote!["important"])[1],
                                 style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)
 
-                            ),
+                            ):TextSpan(),
                           ],
                         ),
                       ).animate().fadeIn().shimmer()
