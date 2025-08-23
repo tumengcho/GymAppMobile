@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_barcode_scanner.dart';
+import 'package:gymapp/components/component_search_meal.dart';
 
 class SearchMealPage extends StatefulWidget {
   const SearchMealPage({super.key});
@@ -10,10 +11,9 @@ class SearchMealPage extends StatefulWidget {
 }
 
 class _SearchMealPageState extends State<SearchMealPage> {
-
   TextEditingController searchController = TextEditingController();
-  
-  
+  String searchValue = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +34,21 @@ class _SearchMealPageState extends State<SearchMealPage> {
                     child: Text(
                       "ADD MEAL",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.w900, letterSpacing: 1, color: Color(0xFFD3FF55), fontSize: 17),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 1,
+                          color: Color(0xFFD3FF55),
+                          fontSize: 17),
                     ),
                   ),
                   Positioned(
                       child: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.arrow_circle_left, color: Color(0xFFD3FF55),size: 30,)))
+                          icon: Icon(
+                            Icons.arrow_circle_left,
+                            color: Color(0xFFD3FF55),
+                            size: 30,
+                          )))
                 ],
               ),
               SizedBox(height: 30),
@@ -49,6 +57,9 @@ class _SearchMealPageState extends State<SearchMealPage> {
                   Expanded(
                     child: TextField(
                       controller: searchController,
+                      style: const TextStyle(
+                        color: Colors.black,
+                      ),
                       decoration: InputDecoration(
                         hintText: "Search...",
                         prefixIcon: Icon(Icons.search, color: Colors.grey),
@@ -59,6 +70,11 @@ class _SearchMealPageState extends State<SearchMealPage> {
                           borderSide: BorderSide.none,
                         ),
                       ),
+                      onSubmitted: (value) => {
+                        setState(() {
+                          searchValue = value;
+                        })
+                      },
                     ),
                   ),
                   SizedBox(
@@ -68,7 +84,6 @@ class _SearchMealPageState extends State<SearchMealPage> {
                 ],
               ),
               SizedBox(height: 30),
-
               DefaultTabController(
                 length: 2,
                 child: Expanded(
@@ -91,18 +106,13 @@ class _SearchMealPageState extends State<SearchMealPage> {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Center(child: Column(
-                              children: [
-                                Image.asset("assets/images/fond_search_page.png"),
-                                Text("Search a meal".toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold),),
-                              ],
-                            )),
-                            Center(child: Column(
-                              children: [
-                                Image.asset("assets/images/fond_search_page.png"),
-                                Text("Search a brand".toUpperCase(), style: TextStyle(fontWeight: FontWeight.bold),),
-                              ],
-                            )),
+                            SearchMeal(
+                                key: ValueKey("generic-$searchValue"),
+                                searchValue: searchValue),
+                            SearchMeal(
+                                key: ValueKey("brand-$searchValue"),
+                                searchValue: searchValue,
+                                brandSearch: true)
                           ],
                         ),
                       ),

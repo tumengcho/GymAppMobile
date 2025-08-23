@@ -10,6 +10,7 @@ import 'package:gymapp/pages/page_default_quote.dart';
 import 'package:gymapp/pages/page_exercise.dart';
 import 'package:gymapp/pages/page_search_meal.dart';
 import 'package:gymapp/service/service_database.dart';
+import 'package:openfoodfacts/openfoodfacts.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -24,6 +25,8 @@ void main() async {
   );
   db = FirebaseFirestore.instance;
   cloudinaryPublic = CloudinaryPublic("dc102wzxc", "gym_app_upload");
+  OpenFoodAPIConfiguration.userAgent = UserAgent(name: 'GYM APP');
+
   // Database.seedDatabase();
   runApp(const GymApp());
 }
