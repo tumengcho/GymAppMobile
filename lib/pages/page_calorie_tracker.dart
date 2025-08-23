@@ -243,7 +243,7 @@ class _CalorieTrackerState extends State<CalorieTracker> {
                                     child: IconButton(
                                       icon: Icon(Icons.add_circle_sharp, color: Color(0xFFD3FF55), size: 40),
                                       onPressed: () {
-                                        // your add action
+                                        Navigator.pushNamed(context, "/searchMeal");
                                       },
                                     ),
                                   ),

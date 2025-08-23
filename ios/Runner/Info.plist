@@ -11,6 +11,8 @@
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
+	<key>NSCameraUsageDescription</key>
+    <string>This app needs camera access to scan barcodes.</string>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>gymapp</string>

@@ -8,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
 import 'package:gymapp/pages/page_default_quote.dart';
 import 'package:gymapp/pages/page_exercise.dart';
+import 'package:gymapp/pages/page_search_meal.dart';
 import 'package:gymapp/service/service_database.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -85,6 +86,7 @@ class GymApp extends StatelessWidget {
                 ModalRoute.of(context)!.settings.arguments as List<ExerciseDTO>;
             return ExercisePage(exercises: arg);
           },
+          "/searchMeal" : (context) => const SearchMealPage()
         });
   }
 }
