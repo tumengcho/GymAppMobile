@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gymapp/pages/page_calorie_calculator.dart';
+import 'package:gymapp/pages/page_calorie_tracker.dart';
 import 'package:gymapp/pages/page_home.dart';
 import 'package:gymapp/pages/page_list_exercises.dart';
 
@@ -37,6 +38,11 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
             label: '',
           ),
           NavigationDestination(
+            selectedIcon: Icon(Icons.fastfood),
+            icon: Icon(Icons.fastfood, color: Colors.white),
+            label: '',
+          ),
+          NavigationDestination(
             selectedIcon: Icon(Icons.calculate),
             icon: Icon(Icons.calculate, color: Colors.white),
             label: '',
@@ -50,9 +56,11 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
         /// List Exercises Page
         ListExercisesPage(),
 
+        /// Calorie Tracker
+        CalorieTracker(),
+
         /// Calorie Calculator Page
         CalorieCalculatorPage(),
-
       ][currentPageIndex],
     );
   }

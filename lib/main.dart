@@ -43,6 +43,12 @@ class GymApp extends StatelessWidget {
             bodyMedium: TextStyle(color: Colors.white),
             bodyLarge: TextStyle(color: Colors.white),
           ),
+          tabBarTheme: const TabBarTheme(
+              labelColor: Color(0xFFD3FF55),
+              labelStyle: TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
+              dividerColor: Colors.transparent,
+              indicator: const BoxDecoration(),
+              unselectedLabelColor: Colors.grey),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
             fillColor: Colors.transparent,
