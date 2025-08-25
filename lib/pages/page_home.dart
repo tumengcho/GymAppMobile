@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_program_card.dart';
 import 'package:gymapp/components/component_gym_calendar.dart';
@@ -72,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                     .slideX(begin: -0.3, end: 0)
                     .fadeIn(duration: 1.5.seconds),
                 const SizedBox(height: 35),
-                GymCalendar().animate().fadeIn().shimmer(),
+                const GymCalendar().animate().fadeIn().shimmer(),
                 const SizedBox(height: 35),
                 Text(
                   "Mes Programmes".toUpperCase(),

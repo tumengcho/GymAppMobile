@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class USDAService {
   static Future<List<ProductInfo>> searchFood(String query) async {
-    final apiKey = 'elU98MypuGSJCtTaNLkfowOxQIUhqciybjDpfLnZ';
+    const apiKey = 'elU98MypuGSJCtTaNLkfowOxQIUhqciybjDpfLnZ';
 
     final url = Uri.parse(
         'https://api.nal.usda.gov/fdc/v1/foods/search?query=$query&dataType=Foundation,SR Legacy&api_key=$apiKey');

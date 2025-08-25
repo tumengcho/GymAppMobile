@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_barcode_scanner.dart';
 import 'package:gymapp/components/component_search_meal.dart';
 
 class SearchMealPage extends StatefulWidget {
-  const SearchMealPage({super.key});
+  String category;
+  SearchMealPage({super.key, required this.category});
 
   @override
   State<SearchMealPage> createState() => _SearchMealPageState();
@@ -18,21 +18,21 @@ class _SearchMealPageState extends State<SearchMealPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
           color: const Color(0xFF323230),
           child: Column(
             children: [
               Stack(
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
                     width: double.maxFinite,
                     height: 50,
                     decoration: BoxDecoration(
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      "ADD MEAL",
+                    child:  Text(
+                      "ADD ${widget.category.toUpperCase()}",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
@@ -43,15 +43,15 @@ class _SearchMealPageState extends State<SearchMealPage> {
                   ),
                   Positioned(
                       child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
+                          onPressed: () => Navigator.pop(context),
+                          icon: const Icon(
                             Icons.arrow_circle_left,
                             color: Color(0xFFD3FF55),
                             size: 30,
                           )))
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Row(
                 children: [
                   Expanded(
@@ -62,7 +62,7 @@ class _SearchMealPageState extends State<SearchMealPage> {
                       ),
                       decoration: InputDecoration(
                         hintText: "Search...",
-                        prefixIcon: Icon(Icons.search, color: Colors.grey),
+                        prefixIcon: const Icon(Icons.search, color: Colors.grey),
                         filled: true,
                         fillColor: Colors.grey[200],
                         border: OutlineInputBorder(
@@ -77,20 +77,20 @@ class _SearchMealPageState extends State<SearchMealPage> {
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
-                  BarCodeScanner()
+                  BarCodeScanner(category: widget.category,)
                 ],
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               DefaultTabController(
                 length: 2,
                 child: Expanded(
                   child: Column(
                     children: [
                       TabBar(
-                        indicator: BoxDecoration(
+                        indicator: const BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
                               color: Color(0xFFD3FF55),
@@ -108,10 +108,12 @@ class _SearchMealPageState extends State<SearchMealPage> {
                           children: [
                             SearchMeal(
                                 key: ValueKey("generic-$searchValue"),
-                                searchValue: searchValue),
+                                searchValue: searchValue,
+                                category: widget.category),
                             SearchMeal(
                                 key: ValueKey("brand-$searchValue"),
                                 searchValue: searchValue,
+                                category: widget.category,
                                 brandSearch: true)
                           ],
                         ),

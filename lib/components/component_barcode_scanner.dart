@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gymapp/dtos/dto_product_info.dart';
 import 'package:gymapp/utils/utils_class.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 
+import 'component_scan_page.dart';
+
 class BarCodeScanner extends StatefulWidget {
-  const BarCodeScanner({super.key});
+  String category;
+  BarCodeScanner({super.key, required this.category});
 
   @override
   State<BarCodeScanner> createState() => _BarCodeScannerState();
@@ -16,19 +15,26 @@ class BarCodeScanner extends StatefulWidget {
 
 class _BarCodeScannerState extends State<BarCodeScanner> {
 
-
   Future<void> scanProduct(BuildContext context) async {
+    String? barcode;
+
+
+
     try {
-      String barcode = await FlutterBarcodeScanner.scanBarcode(
-        "#ff6666",
-        "Cancel",
-        true,
-        ScanMode.BARCODE,
+
+      final barcode = await showDialog<String>(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => ScannerPage(
+          onScan: (code) {
+            Navigator.pop(context, code);
+          },
+        ),
       );
 
-      if (barcode == "-1") return;
+      if (barcode == null) return;
       final configuration = ProductQueryConfiguration(
-        barcode,
+        barcode!,
         fields: [ProductField.ALL],
         language: OpenFoodFactsLanguage.ENGLISH,
         version: ProductQueryVersion.v3,
@@ -57,7 +63,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
         p.images = result.product!.imageFrontUrl;
 
       }
-      Utils.showProductModal(context, p);
+      Utils.showProductModal(context, p, widget.category);
     } catch (e) {
       print(e);
     }
@@ -69,9 +75,9 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: Color(0xFFD3FF55), borderRadius: BorderRadius.circular(10)),
+            color: const Color(0xFFD3FF55), borderRadius: BorderRadius.circular(10)),
         child: IconButton(
             onPressed: () => scanProduct(context),
-            icon: Icon(Icons.document_scanner_outlined)));
+            icon: const Icon(Icons.document_scanner_outlined)));
   }
 }

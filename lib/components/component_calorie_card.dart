@@ -8,7 +8,7 @@ class CalorieCard extends StatelessWidget {
   Color color;
   IconData icon;
   CalorieCard({super.key, required this.type, required this.calorie}) :
-  color =  type == BMRCategory.Gain ? Color(0XFF6C881C) : type == BMRCategory.Maintien ? Color(0XFF9F9F13) : Color(0XFFE86E4F),
+  color =  type == BMRCategory.Gain ? const Color(0XFF6C881C) : type == BMRCategory.Maintien ? const Color(0XFF9F9F13) : const Color(0XFFE86E4F),
   icon = type == BMRCategory.Gain ? Icons.trending_up : type == BMRCategory.Maintien ? Icons.trending_flat : Icons.trending_down;
 
 
@@ -16,18 +16,18 @@ class CalorieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(bottom: 5),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(bottom: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         gradient: LinearGradient(
             colors: [
-              Color(0xFF323230),
+              const Color(0xFF323230),
               color,
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.5, 1])
+            stops: const [0.5, 1])
       ),
       child: Row(
         children: [
@@ -39,7 +39,7 @@ class CalorieCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(5)
             ),
           ),
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +49,7 @@ class CalorieCard extends StatelessWidget {
                   children: [
                     Text(
                       type.name,
-                      style: TextStyle( fontSize: 12),
+                      style: const TextStyle( fontSize: 12),
 
                     ),
                     Text(

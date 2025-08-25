@@ -22,7 +22,7 @@ class _ExerciseListItemState extends State<ExerciseListItem> {
         decoration: BoxDecoration(
             color: const Color(0XFF141414),
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Color(0XFFD3FF55), width: 2)),
+            border: Border.all(color: const Color(0XFFD3FF55), width: 2)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -51,16 +51,16 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
       ),
       body: <Widget>[
         /// Home page
-        HomePage(),
+        const HomePage(),
 
         /// List Exercises Page
-        ListExercisesPage(),
+        const ListExercisesPage(),
 
         /// Calorie Tracker
-        CalorieTracker(),
+        const CalorieTracker(),
 
         /// Calorie Calculator Page
-        CalorieCalculatorPage(),
+        const CalorieCalculatorPage(),
       ][currentPageIndex],
     );
   }

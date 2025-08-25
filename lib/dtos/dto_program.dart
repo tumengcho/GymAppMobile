@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
-import 'package:gymapp/service/service_database.dart';
 
 class Program {
   String? id;

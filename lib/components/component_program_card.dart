@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_exercise_list_item.dart';
 import 'package:gymapp/dtos/dto_program.dart';

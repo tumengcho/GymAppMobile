@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gymapp/components/component_star_renderer.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
@@ -14,9 +13,9 @@ class CardExercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: Color(0xFF323230),
+          color: const Color(0xFF323230),
           border: Border.all(
-            color: Color(0xFFD3FF55),
+            color: const Color(0xFFD3FF55),
             width: 1,
           ),
           borderRadius: BorderRadius.circular(20),

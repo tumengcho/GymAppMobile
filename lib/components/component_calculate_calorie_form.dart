@@ -21,9 +21,9 @@ class _CalculateCalorieFormState extends State<CalculateCalorieForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
       decoration: BoxDecoration(
-          color: Color(0xFF323230), borderRadius: BorderRadius.circular(20)),
+          color: const Color(0xFF323230), borderRadius: BorderRadius.circular(20)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -77,12 +77,12 @@ class _CalculateCalorieFormState extends State<CalculateCalorieForm> {
               border: OutlineInputBorder(),
             ),
             hint: const Text("Sélectionnez un niveau d'activité", style: TextStyle(color: Colors.grey)),
-            value: selectedLevel,
+            initialValue: selectedLevel,
             isExpanded: true,
             items: ActivityLevel.values.map((level) {
               return DropdownMenuItem<ActivityLevel>(
                 value: level,
-                child: Text(level.description, style: TextStyle(color: Colors.white),),
+                child: Text(level.description, style: const TextStyle(color: Colors.white),),
               );
             }).toList(),
             onChanged: (value) {

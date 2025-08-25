@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
@@ -9,7 +8,6 @@ import 'package:gymapp/dtos/dto_exercise.dart';
 import 'package:gymapp/pages/page_default_quote.dart';
 import 'package:gymapp/pages/page_exercise.dart';
 import 'package:gymapp/pages/page_search_meal.dart';
-import 'package:gymapp/service/service_database.dart';
 import 'package:openfoodfacts/openfoodfacts.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -47,33 +45,33 @@ class GymApp extends StatelessWidget {
             bodyMedium: TextStyle(color: Colors.white),
             bodyLarge: TextStyle(color: Colors.white),
           ),
-          tabBarTheme: const TabBarTheme(
+          tabBarTheme: const TabBarThemeData(
               labelColor: Color(0xFFD3FF55),
               labelStyle: TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
               dividerColor: Colors.transparent,
-              indicator: const BoxDecoration(),
+              indicator: BoxDecoration(),
               unselectedLabelColor: Colors.grey),
           inputDecorationTheme: InputDecorationTheme(
             filled: true,
             fillColor: Colors.transparent,
-            labelStyle: TextStyle(color: Colors.white),
-            hintStyle: TextStyle(color: Color(0XFFC5C6CC)),
-            prefixStyle: TextStyle(color: Colors.white),
-            suffixStyle: TextStyle(color: Colors.white),
-            iconColor: Color(0XFFC5C6CC),
-            prefixIconColor: Color(0XFFC5C6CC),
-            suffixIconColor: Color(0XFFC5C6CC),
-            helperStyle: TextStyle(color: Colors.grey),
+            labelStyle: const TextStyle(color: Colors.white),
+            hintStyle: const TextStyle(color: Color(0XFFC5C6CC)),
+            prefixStyle: const TextStyle(color: Colors.white),
+            suffixStyle: const TextStyle(color: Colors.white),
+            iconColor: const Color(0XFFC5C6CC),
+            prefixIconColor: const Color(0XFFC5C6CC),
+            suffixIconColor: const Color(0XFFC5C6CC),
+            helperStyle: const TextStyle(color: Colors.grey),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFFC5C6CC)),
+              borderSide: const BorderSide(color: Color(0XFFC5C6CC)),
               borderRadius: BorderRadius.circular(8),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0XFFC5C6CC), width: 2),
+              borderSide: const BorderSide(color: Color(0XFFC5C6CC), width: 2),
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          textSelectionTheme: TextSelectionThemeData(
+          textSelectionTheme: const TextSelectionThemeData(
             cursorColor: Color(0XFFC5C6CC),
             selectionColor: Colors.white24,
             selectionHandleColor: Colors.white,
@@ -82,14 +80,18 @@ class GymApp extends StatelessWidget {
         ),
         initialRoute: "/",
         routes: {
-          "/": (context) => QuotePage(),
+          "/": (context) => const QuotePage(),
           "/home": (context) => const NavigationWrapper(),
           "/startProgram": (context) {
             final arg =
                 ModalRoute.of(context)!.settings.arguments as List<ExerciseDTO>;
             return ExercisePage(exercises: arg);
           },
-          "/searchMeal" : (context) => const SearchMealPage()
+          "/searchMeal" : (context) {
+            final arg =
+            ModalRoute.of(context)!.settings.arguments as String;
+            return SearchMealPage(category: arg);
+          },
         });
   }
 }

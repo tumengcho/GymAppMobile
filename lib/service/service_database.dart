@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
+import 'package:gymapp/dtos/dto_daily_nutrition.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
+import 'package:gymapp/dtos/dto_product_info.dart';
 import 'package:gymapp/dtos/dto_program.dart';
 import 'package:gymapp/dtos/dto_program_exercise.dart';
 import 'package:gymapp/main.dart';
@@ -12,10 +14,32 @@ import 'package:gymapp/utils/utils_class.dart';
 
 /// Réprésente la base de donnée
 class Database {
+  /// Ajoute un exercise à un programme
+  static Future<void> addExerciseToProgram(
+      ProgramExercise programExercise) async {
+    await db
+        .collection(DatabaseCollectionEntities.programExercise.name)
+        .add(programExercise.toMap());
+  }
+
+  /// Sert à nettoyer la base de donnée
+  static Future<void> clearDatabase() async {
+    final collections = [
+      DatabaseCollectionEntities.program,
+      DatabaseCollectionEntities.exercises
+    ];
+
+    for (final collection in collections) {
+      final snapshots = await db.collection(collection.name).get();
+      for (final doc in snapshots.docs) {
+        await doc.reference.delete();
+      }
+    }
+  }
 
   /// Récupère les exercises associés à un programme.
-  static Future<List<ExerciseDTO>> _getExercisesForProgram(String programId) async {
-
+  static Future<List<ExerciseDTO>> _getExercisesForProgram(
+      String programId) async {
     // Trouver les ProgramExercise correspondant au programme donnée en paramètre
     final relationsSnapshot = await db
         .collection(DatabaseCollectionEntities.programExercise.name)
@@ -23,8 +47,9 @@ class Database {
         .get();
 
     // On récupère tous les ids des exercise associés
-    final exerciseIds =
-    relationsSnapshot.docs.map((doc) => doc['exerciseID'] as String).toList();
+    final exerciseIds = relationsSnapshot.docs
+        .map((doc) => doc['exerciseID'] as String)
+        .toList();
 
     if (exerciseIds.isEmpty) return [];
 
@@ -44,7 +69,8 @@ class Database {
   static Future<List<Program>> getMyPrograms() async {
     var snapshot =
         await db.collection(DatabaseCollectionEntities.program.name).get();
-    List<Program> programs = snapshot.docs.map((doc) => Program.fromMap(doc)).toList();
+    List<Program> programs =
+        snapshot.docs.map((doc) => Program.fromMap(doc)).toList();
     for (var program in programs) {
       program.exercises = await _getExercisesForProgram(program.id!);
     }
@@ -57,28 +83,6 @@ class Database {
         await db.collection(DatabaseCollectionEntities.exercises.name).get();
 
     return snapshot.docs.map((doc) => ExerciseDTO.fromMap(doc)).toList();
-  }
-
-  /// Ajoute un exercise à un programme
-  static Future<void> addExerciseToProgram(ProgramExercise programExercise) async {
-    await db
-        .collection(DatabaseCollectionEntities.programExercise.name)
-        .add(programExercise.toMap());
-  }
-
-  /// Sert à nettoyer la base de donnée
-  static Future<void> clearDatabase() async {
-    final collections = [
-      DatabaseCollectionEntities.program,
-      DatabaseCollectionEntities.exercises
-    ];
-
-    for (final collection in collections) {
-      final snapshots = await db.collection(collection.name).get();
-      for (final doc in snapshots.docs) {
-        await doc.reference.delete();
-      }
-    }
   }
 
   /// Sert à créer un seed pour la base de donnée.
@@ -105,5 +109,62 @@ class Database {
           .collection(DatabaseCollectionEntities.exercises.name)
           .add(exercise.toMap());
     }
+  }
+
+  /// Ajouter une nouveau suivi d'alimentation
+  static Future<DailyNutrition> addNewMealTracking() async {
+    DailyNutrition dailyNutrition =
+        DailyNutrition(calories: 0, proteins: 0, fat: 0, carbs: 0);
+    dailyNutrition.date = DateTime.now();
+
+    await db
+        .collection(DatabaseCollectionEntities.dailyNutrition.name)
+        .add(dailyNutrition.toMap());
+
+    return dailyNutrition;
+  }
+
+  /// Obtient le dernier suivi d'alimentation (le récent)
+  static Future<DailyNutrition?> getLastMealTracking() async {
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection(DatabaseCollectionEntities.dailyNutrition.name)
+        .orderBy('date', descending: true)
+        .limit(1)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      return DailyNutrition.fromMap(querySnapshot.docs.first);
+    }
+
+    return null;
+  }
+
+  static void addMeal(
+      ProductInfo product, double quantity, String category) async {
+    DailyNutrition? dailyNutrition = await getLastMealTracking();
+
+    print(product.calories);
+
+    if (dailyNutrition == null) return;
+    double pCalories = product.calories * quantity;
+    double pProteins = product.protein * quantity;
+    double pFat = product.fat * quantity;
+    double pCarbs = product.calbs * quantity;
+
+    ProductInfo mealProduct = ProductInfo(
+        product.name, pCalories, pFat, pCarbs, pProteins, product.serving);
+    mealProduct.images = product.images;
+
+    dailyNutrition.meals[category]!.add(mealProduct);
+
+    dailyNutrition.calories += mealProduct.calories.toInt();
+    dailyNutrition.proteins += mealProduct.protein;
+    dailyNutrition.fat += mealProduct.fat;
+    dailyNutrition.carbs += mealProduct.calbs;
+
+    await db
+        .collection(DatabaseCollectionEntities.dailyNutrition.name)
+        .doc(dailyNutrition.id)
+        .update(dailyNutrition.toMap());
   }
 }

@@ -3,7 +3,7 @@ import 'package:openfoodfacts/openfoodfacts.dart';
 
 class OpenFoodFactsService {
   static Future<List<ProductInfo>> searchProduct(String query) async {
-    final user = User(userId: '', password: '');
+    const user = User(userId: '', password: '');
 
     final parameters = [
       const PageSize(size: 10),

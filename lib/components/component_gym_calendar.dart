@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -8,7 +7,7 @@ import 'package:table_calendar/table_calendar.dart';
 /// TODO : Faire en sorte de relier des évènements à des dates et de pouvoir avoir un streak.
 
 class GymCalendar extends StatefulWidget {
-  GymCalendar({super.key});
+  const GymCalendar({super.key});
 
   @override
   State<GymCalendar> createState() => _GymCalendarState();
@@ -105,8 +104,8 @@ class _GymCalendarState extends State<GymCalendar> {
                       children: [
                         _selectedFormat == CalendarFormat.week
                             ? Text(DateFormat.E().format(aDate),
-                                style: TextStyle(fontSize: 10))
-                            : SizedBox.shrink(),
+                                style: const TextStyle(fontSize: 10))
+                            : const SizedBox.shrink(),
                         Text(aDate.day.toString(),
                             style: _selectedFormat == CalendarFormat.week
                                 ? const TextStyle(

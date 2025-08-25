@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:gymapp/dtos/dto_exercise.dart';
 import 'package:gymapp/dtos/dto_program_exercise.dart';
@@ -61,7 +59,7 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
       setState(() {
         isAddingExercise = true;
       });
-      ExerciseDTO selectedExcercise = displayExercises[previousIndex!];
+      ExerciseDTO selectedExcercise = displayExercises[previousIndex];
       ProgramExercise newExerciceProgram =
           ProgramExercise(selectedProgram?.id, selectedExcercise.id);
       await Database.addExerciseToProgram(newExerciceProgram);
@@ -169,7 +167,7 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
                         FloatingActionButton(
                           onPressed: () =>
                               controller.swipe(CardSwiperDirection.left),
-                          backgroundColor: Color(0xFF323230),
+                          backgroundColor: const Color(0xFF323230),
                           elevation: 0,
                           child: const Icon(
                             Icons.close,
@@ -178,7 +176,7 @@ class _ListExercisesPageState extends State<ListExercisesPage> {
                         ),
                         FloatingActionButton(
                           onPressed: controller.undo,
-                          backgroundColor: Color(0xFF323230),
+                          backgroundColor: const Color(0xFF323230),
                           elevation: 0,
                           child: const Icon(
                             Icons.rotate_left,

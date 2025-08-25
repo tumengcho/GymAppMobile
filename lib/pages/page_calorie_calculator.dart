@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gymapp/components/component_calculate_calorie_form.dart';
 import 'package:gymapp/components/component_calorie_card.dart';
-import 'package:gymapp/pages/page_exercise.dart';
 
 import '../utils/bmr_enum.dart';
 

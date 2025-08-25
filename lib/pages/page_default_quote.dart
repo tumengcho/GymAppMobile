@@ -1,12 +1,10 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gymapp/utils/utils_class.dart';
 
 class QuotePage extends StatefulWidget {
-  QuotePage({super.key});
+  const QuotePage({super.key});
 
   @override
   State<QuotePage> createState() => _QuotePageState();
@@ -29,7 +27,7 @@ class _QuotePageState extends State<QuotePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               opacity: 0.6,
               fit: BoxFit.cover,
@@ -94,7 +92,7 @@ class _QuotePageState extends State<QuotePage> {
                 children: [
                       RichText(
                         text: TextSpan(
-                          style: TextStyle(fontSize: 20, color: Colors.white),
+                          style: const TextStyle(fontSize: 20, color: Colors.white),
                           children: [
                             TextSpan(
                               text: quote!["quote"].split(quote!["important"])[0],
@@ -102,13 +100,13 @@ class _QuotePageState extends State<QuotePage> {
                             ),
                             TextSpan(
                               text: quote!["important"],
-                              style: TextStyle(color: Color(0xFFD3FF55), fontWeight: FontWeight.bold, fontSize: 20),
+                              style: const TextStyle(color: Color(0xFFD3FF55), fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             quote!["quote"].split(quote!["important"]).length > 1? TextSpan(
                               text: " "+quote!["quote"].split(quote!["important"])[1],
                                 style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)
 
-                            ):TextSpan(),
+                            ):const TextSpan(),
                           ],
                         ),
                       ).animate().fadeIn().shimmer()
@@ -116,19 +114,18 @@ class _QuotePageState extends State<QuotePage> {
 
                   Text(
                     quote!["author"] ?? "",
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         decoration: TextDecoration.none,
                         fontWeight: FontWeight.w900,
                         fontSize: 18),
                   ).animate().fadeIn(duration: 500.ms, delay: 100.ms),
                 ],
-              ):Center(child: CircularProgressIndicator(color: Color(0xFFD3FF55),),),
+              ):const Center(child: CircularProgressIndicator(color: Color(0xFFD3FF55),),),
             ),
           )
         ],
       ),
     );
-    ;
   }
 }
